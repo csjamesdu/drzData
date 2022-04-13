@@ -30,13 +30,14 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getProduct(){
+    public List<Product> getProduct(Integer prodNumber){
 
         List<Product> resultList = new ArrayList<>();
         Map<Integer, List<Product>> resultMap = new HashMap<>();
         Integer counter = 0;
 
-        ProductWrapper trialResult = getTrialProduct();
+        ProductWrapper trialResult = getTrialProduct(prodNumber);
+
         resultList.addAll(trialResult.getResult());
 
 //        Integer totalPages = trialResult.getTotalPages();
@@ -50,8 +51,8 @@ public class ProductServiceImpl implements ProductService {
         return resultList;
     }
 
-    public ProductWrapper getTrialProduct(){
-        URI url = URI.create(BASE_URL + "/products?page_no=1&limit=20");
+    public ProductWrapper getTrialProduct(Integer prodNumber){
+        URI url = URI.create(BASE_URL + "/products?page_no=1&limit="+prodNumber);
         ProductWrapper wrapper = restTemplate.getForObject(url, ProductWrapper.class);
         return wrapper;
     }

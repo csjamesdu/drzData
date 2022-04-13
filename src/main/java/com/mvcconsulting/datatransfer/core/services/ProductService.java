@@ -5,5 +5,5 @@ import com.mvcconsulting.datatransfer.core.models.Product;
 import java.util.List;
 
 public interface ProductService {
-    List<Product> getProduct();
+    List<Product> getProduct(Integer prodNumber);
 }
