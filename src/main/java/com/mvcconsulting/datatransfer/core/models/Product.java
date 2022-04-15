@@ -3,6 +3,7 @@ package com.mvcconsulting.datatransfer.core.models;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import javax.annotation.Generated;
 
 import com.fasterxml.jackson.annotation.*;
@@ -444,4 +445,16 @@ public class Product {
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return sku.equals(product.sku);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(sku);
+    }
 }

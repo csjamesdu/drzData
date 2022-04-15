@@ -32,4 +32,13 @@ public class ProductController {
 
         return resultStr;
     }
+
+    @RequestMapping(value="/getProductBySku/{sku}", method=RequestMethod.GET)
+    public String getProductBySku(HttpServletRequest request, HttpServletResponse response, @PathVariable String sku){
+
+        Product result = productService.getProductBySku(sku);
+        Gson gson = new Gson();
+        String resultStr = gson.toJson(result);
+        return resultStr;
+    }
 }

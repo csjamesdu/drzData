@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface ProductService {
     List<Product> getProduct(Integer prodNumber);
+
+    Product getProductBySku(String sku);
 }
