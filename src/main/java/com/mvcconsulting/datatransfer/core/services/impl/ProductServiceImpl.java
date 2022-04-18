@@ -63,6 +63,15 @@ public class ProductServiceImpl implements ProductService {
         return productList.get(0);
     }
 
+    @Override
+    public ProductListDTO getProductsBySkus(String skus) {
+
+        List<Product> productList = getProductListBySku(skus);
+        ProductListDTO result = new ProductListDTO();
+        result.setProductList(productList);
+        return result;
+    }
+
     private List<Product> getProductListBySku(String sku){
         URI url = URI.create(BASE_URL + "/getProductBySkus");
         SkusQryParamDTO paramDTO = new SkusQryParamDTO(sku);
